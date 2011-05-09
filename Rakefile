@@ -1,10 +1,5 @@
 require 'bundler'
 
-def die(msg, code=1)
-  $stderr.puts msg
-  exit code
-end
-
 def install_tasks(opts = nil)
   dir = caller.find{|c| /Rakefile:/}[/^(.*?)\/Rakefile:/, 1]
   h = Bundler::GemHelper.new(dir, opts && opts[:name])
@@ -19,9 +14,9 @@ CLEAN.include 'test/reports','lib/**/*.jar','*.log', 'pkg'
 
 task :git_local_check do
   sh "git diff --no-ext-diff --ignore-submodules --quiet --exit-code" do |ok, _|
-    die "working directory is unclean" if !ok
+    raise "working directory is unclean" if !ok
     sh "git diff-index --cached --quiet --ignore-submodules HEAD --" do |ok, _|
-      die "git index is unclean" if !ok
+      raise "git index is unclean" if !ok
     end
   end
 end
