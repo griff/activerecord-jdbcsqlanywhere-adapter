@@ -1,4 +1,4 @@
 pkg/*
 *.gem
 .bundle
-lib/*.jar
+lib/arjdbc/sqlanywhere/adapter_java.jar
