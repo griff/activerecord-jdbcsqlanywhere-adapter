@@ -27,8 +27,10 @@
 
 package arjdbc.sqlanywhere;
 
+import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 
 import arjdbc.jdbc.RubyJdbcConnection;
@@ -36,6 +38,7 @@ import arjdbc.jdbc.RubyJdbcConnection;
 import org.jruby.Ruby;
 import org.jruby.RubyClass;
 import org.jruby.runtime.ObjectAllocator;
+import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 
 /**
