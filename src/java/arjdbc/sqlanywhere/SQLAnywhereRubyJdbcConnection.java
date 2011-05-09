@@ -72,4 +72,11 @@ public class SQLAnywhereRubyJdbcConnection extends RubyJdbcConnection {
         }
         return super.jdbcToRuby(runtime, column, type, resultSet);
     }
+    
+    @Override
+    protected IRubyObject unmarshalResults(ThreadContext context, DatabaseMetaData metadata,
+                                           Statement stmt, boolean downCase) throws SQLException {
+        return super.unmarshalResults(context, metadata, stmt, true);
+    }
+    
 }
