@@ -1,5 +1,5 @@
-activerecord-sqlanywhere-adapter
+activerecord-jdbcsqlanywhere-adapter
 ===========================
 
-This is an ActiveRecord adapter for Sybase SQLAnywhere.
+This is an ActiveRecord JDBC adapter for Sybase SQLAnywhere.
 
