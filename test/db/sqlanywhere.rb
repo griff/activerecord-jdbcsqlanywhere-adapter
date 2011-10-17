@@ -1,9 +1,10 @@
 config = { 
   :username => 'dba',
-  :password => 'weblog',
+  :password => 'sql',
   :adapter  => 'sqlanywhere',
   :host     => ENV[ "SQLANYWHERE_HOST" ] || 'localhost',
-  :database => ENV[ "SQLANYWHERE_NAMESPACE" ] || 'weblog_development'
+  :port     => ENV[ "SQLANYWHERE_PORT" ] || nil,
+  :database => ENV[ "SQLANYWHERE_NAMESPACE" ] || 'ARTest'
 }
 
 ActiveRecord::Base.establish_connection( config )
