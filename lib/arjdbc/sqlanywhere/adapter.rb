@@ -99,8 +99,8 @@ module ::ArJdbc
     end
 
     def add_limit_offset!(sql, options)
-      if options[:limit] and options[:offset] and options[:offset] > 0
-        sql.sub!(/^\s*SELECT(\s+DISTINCT)?/i,  "SELECT\\1 TOP #{options[:limit]} START AT #{options[:offset]+1}")
+      if options[:limit] and options[:offset] and options[:offset].to_i > 0
+        sql.sub!(/^\s*SELECT(\s+DISTINCT)?/i,  "SELECT\\1 TOP #{options[:limit]} START AT #{options[:offset].to_i+1}")
       elsif sql !~ /^\s*SELECT (@@|COUNT\()/i
         sql.sub!(/^\s*SELECT(\s+DISTINCT)?/i) do
           "SELECT#{$1} TOP #{options[:limit]}"
