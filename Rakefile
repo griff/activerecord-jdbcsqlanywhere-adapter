@@ -23,6 +23,14 @@ end
 task :build => [:java_compile, :git_local_check]
 
 require 'rake/testtask'
+
+# overriding the default rake tests loader
+class Rake::TestTask
+  def rake_loader
+    'test/my-minitest-loader.rb'
+  end
+end
+
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   ar_jdbc = ENV['AR_JDBC'] ||
