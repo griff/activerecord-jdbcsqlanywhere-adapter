@@ -2,3 +2,5 @@ pkg/*
 *.gem
 .bundle
 *.jar
+Gemfile.lock
+.rvmrc
