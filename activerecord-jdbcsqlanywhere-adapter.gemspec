@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency('activerecord-jdbc-adapter', "~> 1.1.1")
+  s.add_dependency('activerecord-jdbc-adapter', "~> 1.2.0")
   s.add_development_dependency "bundler", ">= 1.0.0"
 
   s.files        = `git ls-files`.split("\n") << 'lib/arjdbc/sqlanywhere/adapter_java.jar'
