@@ -31,6 +31,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Connection;
 import java.sql.Types;
 
 import arjdbc.jdbc.RubyJdbcConnection;
@@ -64,16 +65,30 @@ public class SQLAnywhereRubyJdbcConnection extends RubyJdbcConnection {
         }
     };
 
+    protected static IRubyObject booleanToRuby(Ruby runtime, ResultSet resultSet, boolean booleanValue)
+            throws SQLException {
+        if (booleanValue == false && resultSet.wasNull()) return runtime.getNil();
+        return runtime.newBoolean(booleanValue);
+    }
+
     /**
      * Treat LONGVARCHAR as CLOB on Informix for purposes of converting a JDBC value to Ruby.
      */
     @Override
     protected IRubyObject jdbcToRuby(Ruby runtime, int column, int type, ResultSet resultSet)
             throws SQLException {
+        if ( Types.BOOLEAN == type || Types.BIT == type ) {
+          return booleanToRuby(runtime, resultSet, resultSet.getBoolean(column));
+        }
         if (type == Types.LONGVARCHAR) {
             type = Types.CLOB;
         }
         return super.jdbcToRuby(runtime, column, type, resultSet);
+    }
+    
+    @Override
+    protected IRubyObject unmarshalKeysOrUpdateCount(ThreadContext context, Connection c, Statement stmt) throws SQLException {
+        return context.getRuntime().newFixnum(stmt.getUpdateCount());
     }
     
     @Override
