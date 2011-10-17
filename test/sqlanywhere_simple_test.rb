@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'jdbc_common'
 require 'db/sqlanywhere'
 
