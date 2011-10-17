@@ -7,6 +7,11 @@ module ::ArJdbc
     def self.column_selector
       [/sqlanywhere/i, lambda {|cfg,col| col.extend(::ArJdbc::SybaseSQLAnywhere::Column)}]
     end
+
+    def self.arel2_visitors(config)
+      require 'arel/visitors/sqlanywhere'
+      {}.tap {|v| %w(sqlanywhere jdbcsqlanywhere).each {|x| v[x] = ::Arel::Visitors::SybaseSQLAnywhere } }
+    end
     
     module Column
       def init_column(name, default, *args)
