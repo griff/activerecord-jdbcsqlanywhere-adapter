@@ -45,7 +45,7 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "#{spec.name} #{spec.version}"

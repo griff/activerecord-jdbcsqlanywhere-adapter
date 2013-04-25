@@ -4,3 +4,4 @@ pkg/*
 *.jar
 Gemfile.lock
 .rvmrc
+/rdoc/
