@@ -1,4 +1,4 @@
-source :gemcutter
+source 'https://rubygems.org'
 
 gem 'rails', ENV['AR_VERSION'] if ENV['AR_VERSION']
 gem 'activerecord', ENV['AR_VERSION']

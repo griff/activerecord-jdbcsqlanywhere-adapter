@@ -4,4 +4,7 @@ pkg/*
 *.jar
 Gemfile.lock
 .rvmrc
+.ruby-version
 /rdoc/
+/vendor/bundle
+/vendor/bin

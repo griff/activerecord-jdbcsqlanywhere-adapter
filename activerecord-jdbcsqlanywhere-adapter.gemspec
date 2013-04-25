@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('activerecord-jdbc-adapter', "~> 1.2.0")
   s.add_development_dependency "bundler", ">= 1.0.0"
+  s.add_development_dependency "rake", "~> 10.0.3"
 
   s.files        = `git ls-files`.split("\n") << 'lib/arjdbc/sqlanywhere/adapter_java.jar'
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
